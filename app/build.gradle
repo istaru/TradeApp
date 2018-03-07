@@ -152,6 +152,4 @@ dependencies {
     compile 'com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE'
     //Google广告
     compile 'com.google.android.gms:play-services-ads:11.8.0'
-    //滑动退出activity
-    compile 'me.imid.swipebacklayout.lib:library:1.1.0'
 }

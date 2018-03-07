@@ -13,13 +13,11 @@ import com.shhb.gd.shop.R;
 import com.shhb.gd.shop.application.MainApplication;
 import com.shhb.gd.shop.view.BlackStatusBar;
 
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
-
 /**
  * Created by superMoon on 2017/3/15.
  */
 
-public class BaseActivity extends SwipeBackActivity {
+public class BaseActivity extends AppCompatActivity {
 
     public static Activity context;
     public boolean processFlag = true; //默认可以点击
