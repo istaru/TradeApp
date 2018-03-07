@@ -9,13 +9,18 @@
         <item name="colorPrimaryDark">@color/white</item>
         <!-- 随主题而改变的颜色（如CheckBox的颜色）-->
         <item name="colorAccent">@color/btn_unselect</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     //1、设置背景图Theme
-    <style name="mainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="welecomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@mipmap/welcome1_1</item>
         <!--<item name="android:windowIsTranslucent">true</item>-->
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="mainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
     </style>
 
     <!--窗体弹出动画(自上而下)-->
