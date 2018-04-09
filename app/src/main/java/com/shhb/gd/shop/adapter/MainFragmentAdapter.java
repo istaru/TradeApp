@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.shhb.gd.shop.R;
 import com.shhb.gd.shop.module.BannerInfo;
 import com.shhb.gd.shop.tools.BaseTools;
+import com.shhb.gd.shop.view.CustomTransformer;
 import com.shhb.gd.shop.view.CustomViewPager;
 
 import java.util.ArrayList;
@@ -204,14 +206,24 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     static class BannerHolder extends RecyclerView.ViewHolder {
+        RelativeLayout relativeLayout;
         CustomViewPager viewPager;
         ViewGroup indicators;
 
         /** 获取到banner中的每一个View */
         public BannerHolder(View itemView) {
             super(itemView);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.viewpager_container);
+            relativeLayout.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return viewPager.onTouchEvent(event);
+                }
+            });
             viewPager = (CustomViewPager) itemView.findViewById(R.id.viewPager);
             viewPager.setScanScroll(true);
+            viewPager.setPageTransformer(true, new CustomTransformer());
+            viewPager.setOffscreenPageLimit(3);
             indicators = (ViewGroup) itemView.findViewById(R.id.indicators);
         }
     }

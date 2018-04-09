@@ -310,20 +310,34 @@ public class MainFragment extends BaseFragment implements OnRefreshListener, OnL
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
                 try {
-                    JSONObject jsonObject = JSONObject.parseObject(json);
-                    int status = jsonObject.getInteger("status");
-                    if(1 == status){
-                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        final List<BannerInfo> bannerList = new ArrayList<>();
-                        for(int i = 0;i < jsonArray.size();i++){
-                            jsonObject = jsonArray.getJSONObject(i);
-                            BannerInfo banner = new BannerInfo();
-                            banner.setAvatar(jsonObject.getString("icon_url"));
-                            banner.setName("第"+(i+1)+"张图");
-                            bannerList.add(banner);
-                        }
-                        mAdapter.addBannerData(bannerList);
+//                    JSONObject jsonObject = JSONObject.parseObject(json);
+//                    int status = jsonObject.getInteger("status");
+//                    if(1 == status){
+//                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+//                        final List<BannerInfo> bannerList = new ArrayList<>();
+//                        for(int i = 0;i < jsonArray.size();i++){
+//                            jsonObject = jsonArray.getJSONObject(i);
+//                            BannerInfo banner = new BannerInfo();
+//                            banner.setAvatar(jsonObject.getString("icon_url"));
+//                            banner.setName("第"+(i+1)+"张图");
+//                            bannerList.add(banner);
+//                        }
+//                        mAdapter.addBannerData(bannerList);
+//                    }
+                    String urls[] = {
+                            "https://img.alicdn.com/tfs/TB1mo.aipuWBuNjSszbXXcS7FXa-520-280.jpg_q90_.webp",
+                            "https://img.alicdn.com/tfs/TB1IkMbiQyWBuNjy0FpXXassXXa-520-280.jpg_q90_.webp",
+                            "https://img.alicdn.com/simba/img/TB1Q.2liXuWBuNjSszbSuwS7FXa.jpg"
+
+                    };
+                    final List<BannerInfo> bannerList = new ArrayList<>();
+                    for(int i = 0;i < urls.length;i++){
+                        BannerInfo banner = new BannerInfo();
+                        banner.setAvatar(urls[i]);
+                        banner.setName("第"+(i+1)+"张图");
+                        bannerList.add(banner);
                     }
+                    mAdapter.addBannerData(bannerList);
                 } catch (Exception e){
                     e.printStackTrace();
                 }

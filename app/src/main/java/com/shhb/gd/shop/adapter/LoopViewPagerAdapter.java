@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +17,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.shhb.gd.shop.R;
 import com.shhb.gd.shop.module.BannerInfo;
+import com.shhb.gd.shop.view.GlideRoundTransform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +105,7 @@ public class LoopViewPagerAdapter extends BaseLoopPagerAdapter {
         BannerInfo character = bannerInfos.get(position);
         Glide.with(parent.getContext())
                 .load(character.getAvatar())
+                .transform(new GlideRoundTransform(parent.getContext(),10))
                 .placeholder(R.mipmap.error_c)
                 .error(R.mipmap.error_c)//加载出错的图片
                 .priority(Priority.HIGH)//优先加载
