@@ -103,7 +103,7 @@ public class UMShare implements UMShareListener {
         if(throwable.getMessage().contains("没有安装")){//没有安装应用
             showToast(1,"请先安装应用！");
         } else {
-            showToast(1,"分享"+type+"！");
+            showToast(1,throwable.getMessage());
         }
         new hideThread().start();
     }
@@ -149,8 +149,7 @@ public class UMShare implements UMShareListener {
     public void showToast(int type,String content){
         if (type == 0) {
             hud.setCustomView(imageView);
-            hud.setDetailsLabel(content + "...");
-            hud.setDetailsLabel(content);
+            hud.setLabel(content + "...");
             hud.show();
         } else {
             hud.dismiss();

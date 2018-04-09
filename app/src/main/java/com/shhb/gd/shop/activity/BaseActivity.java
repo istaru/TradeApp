@@ -102,7 +102,7 @@ public class BaseActivity extends SwipeBackActivity {
         if (type == 0) {
             drawable.start();
             hud.setCustomView(imageView);
-            hud.setDetailsLabel(content + "...");
+            hud.setLabel(content + "...");
             hud.show();
         } else {
             if(hud.isShowing()){

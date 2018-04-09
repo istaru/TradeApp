@@ -174,7 +174,7 @@ public class AlibcUser {
         if (type == 0) {
             drawable.start();
             hud.setCustomView(imageView);
-            hud.setDetailsLabel(content + "...");
+            hud.setLabel(content + "...");
             hud.show();
         } else {
             hud.dismiss();
