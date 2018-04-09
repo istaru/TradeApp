@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@mipmap/elephant_money1" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money2" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money3" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money4" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money5" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money6" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money7" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money8" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money9" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money10" android:duration="100"/>
+    <item android:drawable="@mipmap/elephant_money11" android:duration="100"/>
+</animation-list>

@@ -1,4 +1,4 @@
-package com.shhb.gd.shop.view.header;
+package com.shhb.gd.shop.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;

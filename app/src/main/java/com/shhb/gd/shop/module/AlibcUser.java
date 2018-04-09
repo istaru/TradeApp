@@ -2,6 +2,7 @@ package com.shhb.gd.shop.module;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import com.alibaba.baichuan.android.trade.adapter.login.AlibcLogin;
 import com.alibaba.baichuan.android.trade.callback.AlibcLoginCallback;
 import com.alibaba.fastjson.JSONObject;
 import com.kaopiz.kprogresshud.KProgressHUD;
+import com.shhb.gd.shop.R;
 import com.shhb.gd.shop.activity.SetActivity;
 import com.shhb.gd.shop.application.MainApplication;
 import com.shhb.gd.shop.tools.BaseTools;
@@ -36,10 +38,15 @@ public class AlibcUser {
     private static KProgressHUD hud;
     private static KProgressHUD failureHud;
     private List<Activity> activitys;
+    private ImageView imageView ;
+    private AnimationDrawable drawable;
 
     public AlibcUser(Activity context){
         this.context = context;
         hud = KProgressHUD.create(context);
+        imageView = new ImageView(context);
+        imageView.setBackgroundResource(R.drawable.custom_img_load);
+        drawable = (AnimationDrawable) imageView.getBackground();
         failureHud = KProgressHUD.create(context);
         failureHud.setCustomView(new ImageView(context));
         activitys = MainApplication.getActivitys();
@@ -165,7 +172,9 @@ public class AlibcUser {
      */
     private void showToast(int type,String content){
         if (type == 0) {
-            hud.setLabel(content);
+            drawable.start();
+            hud.setCustomView(imageView);
+            hud.setDetailsLabel(content + "...");
             hud.show();
         } else {
             hud.dismiss();
@@ -186,7 +195,7 @@ public class AlibcUser {
             String content = (String) msg.obj;
             try {
                 if(msg.what == 1){
-                    failureHud.setLabel(content);
+                    failureHud.setDetailsLabel(content);
                     failureHud.show();
                 }
             } catch (Exception e){

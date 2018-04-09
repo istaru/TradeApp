@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.shhb.gd.shop.view.header.ImgRefreshHeaderView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/load_more_footer_height_google">
+
+    <ImageView
+        android:id="@+id/ivSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/ivRefresh"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/refresh_img" />
+
+</com.shhb.gd.shop.view.header.ImgRefreshHeaderView>

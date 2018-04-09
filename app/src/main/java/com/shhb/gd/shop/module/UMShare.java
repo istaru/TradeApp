@@ -1,6 +1,7 @@
 package com.shhb.gd.shop.module;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
@@ -36,6 +37,8 @@ public class UMShare implements UMShareListener {
     private Activity context;
     private static KProgressHUD hud;
     private static KProgressHUD failureHud;
+    private ImageView imageView ;
+    private AnimationDrawable drawable;
     private String numId;
     private String type;
 
@@ -43,6 +46,9 @@ public class UMShare implements UMShareListener {
         this.context = context;
         this.numId = numId;
         hud = KProgressHUD.create(context);
+        imageView = new ImageView(context);
+        imageView.setBackgroundResource(R.drawable.custom_img_load);
+        drawable = (AnimationDrawable) imageView.getBackground();
         failureHud = KProgressHUD.create(context);
         failureHud.setCustomView(new ImageView(context));
     }
@@ -142,7 +148,9 @@ public class UMShare implements UMShareListener {
      */
     public void showToast(int type,String content){
         if (type == 0) {
-            hud.setLabel(content);
+            hud.setCustomView(imageView);
+            hud.setDetailsLabel(content + "...");
+            hud.setDetailsLabel(content);
             hud.show();
         } else {
             hud.dismiss();
@@ -163,7 +171,7 @@ public class UMShare implements UMShareListener {
             String content = (String) msg.obj;
             try {
                 if(msg.what == 1){
-                    failureHud.setLabel(content);
+                    failureHud.setDetailsLabel(content);
                     failureHud.show();
                 }
             } catch (Exception e){

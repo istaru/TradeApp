@@ -9,7 +9,10 @@
 
     <include
         android:id="@+id/swipe_refresh_header"
-        layout="@layout/layout_twitter_header" />
+        layout="@layout/layout_img_header" />
+    <!--<include
+        android:id="@+id/swipe_refresh_header"
+        layout="@layout/layout_twitter_header" />-->
     <!--app:default_to_loading_more_scrolling_duration="500"
     app:default_to_refreshing_scrolling_duration="1000"
     app:load_more_complete_delay_duration="0"

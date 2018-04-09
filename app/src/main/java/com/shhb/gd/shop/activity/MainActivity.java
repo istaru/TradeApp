@@ -34,8 +34,6 @@ import com.shhb.gd.shop.tools.PrefShared;
 import com.shhb.gd.shop.view.CustomViewPager;
 import com.umeng.socialize.UMShareAPI;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,15 +130,6 @@ public class MainActivity extends BaseActivity{
 
         @Override
         public void onTabReselected(int position) {//选中 -> 选中
-            int yqPostion = PrefShared.getInt(context,"toPostion");
-            if(yqPostion == position){
-                if ((System.currentTimeMillis() - mExitTime) > 1000) {
-                    mExitTime = System.currentTimeMillis();
-                } else {
-                    EventBus.getDefault().post(position+"");
-                }
-            }
-            PrefShared.saveInt(context,"toPostion",position);
         }
     };
 

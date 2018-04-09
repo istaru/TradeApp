@@ -33,10 +33,6 @@ import com.shhb.gd.shop.tools.OkHttpUtils;
 import com.shhb.gd.shop.tools.PrefShared;
 import com.shhb.gd.shop.view.DividerItemDecoration;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,18 +139,6 @@ public class MainFragment extends BaseFragment implements OnRefreshListener, OnL
         });
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(String type){
-//        if(TextUtils.equals(type,"0")){
-            swipeToLoadLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    swipeToLoadLayout.setRefreshing(true);
-                }
-            });
-//        }
-    }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -167,19 +151,6 @@ public class MainFragment extends BaseFragment implements OnRefreshListener, OnL
                 }
             });
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);//注册EventBus
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);//取消注册
-        closeLoading();
     }
 
     /**

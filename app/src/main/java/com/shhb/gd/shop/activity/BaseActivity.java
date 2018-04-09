@@ -1,11 +1,13 @@
 package com.shhb.gd.shop.activity;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import com.jaeger.library.StatusBarUtil;
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -25,12 +27,15 @@ public class BaseActivity extends SwipeBackActivity {
     public boolean processFlag = true; //默认可以点击
     public KProgressHUD hud;
     public KProgressHUD failureHud;
+    private ImageView imageView ;
+    private AnimationDrawable drawable;
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         setStatusBar();
         setBlackStatusBar();
+        createCustomImgLoad();
         createLoading();
     }
 
@@ -46,6 +51,12 @@ public class BaseActivity extends SwipeBackActivity {
      */
     protected void setBlackStatusBar() {
         BlackStatusBar.StatusBarLightMode(this);
+    }
+
+    private void createCustomImgLoad() {
+        imageView = new ImageView(this);
+        imageView.setBackgroundResource(R.drawable.custom_img_load);
+        drawable = (AnimationDrawable) imageView.getBackground();
     }
 
     /**
@@ -89,7 +100,9 @@ public class BaseActivity extends SwipeBackActivity {
      */
     public void showToast(int type,String content){
         if (type == 0) {
-            hud.setLabel(content);
+            drawable.start();
+            hud.setCustomView(imageView);
+            hud.setDetailsLabel(content + "...");
             hud.show();
         } else {
             if(hud.isShowing()){
@@ -121,7 +134,7 @@ public class BaseActivity extends SwipeBackActivity {
             String content = (String) msg.obj;
             try {
                 if(msg.what == 1){
-                    failureHud.setLabel(content);
+                    failureHud.setDetailsLabel(content);
                     failureHud.show();
                 }
             } catch (Exception e){
