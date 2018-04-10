@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity{
                 .setActiveColor(R.color.btn_unselect)////设置选中的Item的颜色，包括图片和文字
                 .setMode(BottomNavigationBar.MODE_FIXED)//没有切换动画且都有文字（MODE_SHIFTING:换挡模式;MODE_DEFAULT）     如果设置的Mode为MODE_FIXED，将使用BACKGROUND_STYLE_STATIC 。
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)//（RIPPLE：波纹动画、STATIC：没有波纹动画） 如果Mode为MODE_SHIFTING将使用BACKGROUND_STYLE_RIPPLE。
-                .setBarBackgroundColor(R.color.white);//设置navigationBar的背景颜色
+                .setBarBackgroundColor(R.color.b_white);//设置navigationBar的背景颜色
 //        BadgeItem badge = new BadgeItem()
 //                .setBorderWidth(2)//Badge的Border(边界)宽度
 //                .setBorderColor("#FF0000")//Badge的Border颜色

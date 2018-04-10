@@ -223,6 +223,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewPager = (CustomViewPager) itemView.findViewById(R.id.viewPager);
             viewPager.setScanScroll(true);
             viewPager.setPageTransformer(true, new CustomTransformer());
+            viewPager.setPageMargin(20);
             viewPager.setOffscreenPageLimit(3);
             indicators = (ViewGroup) itemView.findViewById(R.id.indicators);
         }

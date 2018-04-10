@@ -14,8 +14,7 @@
         <com.shhb.gd.shop.view.CustomViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/mian_line" />
+            android:layout_height="match_parent" />
 
         <View
             android:id="@+id/mian_line"

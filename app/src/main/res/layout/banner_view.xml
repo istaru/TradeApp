@@ -3,6 +3,8 @@
     android:id="@+id/viewpager_container"
     android:layout_width="match_parent"
     android:layout_height="120dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     android:background="@color/white"
     android:clipChildren="false">
@@ -22,7 +24,6 @@
         android:orientation="horizontal"
         android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"/>
 
-    </LinearLayout>
 </RelativeLayout>

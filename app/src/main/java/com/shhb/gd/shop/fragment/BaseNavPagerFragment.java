@@ -57,7 +57,9 @@ public abstract class BaseNavPagerFragment extends BaseFragment {
         tabLayout.addOnTabSelectedListener(tabChangeListener);
         viewPager = (CustomViewPager) view.findViewById(R.id.viewPager);
         viewPager.setScanScroll(true);
-        viewPager.setOffscreenPageLimit(titles.size());
+        if(null != titles){
+            viewPager.setOffscreenPageLimit(titles.size());
+        }
         viewPager.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

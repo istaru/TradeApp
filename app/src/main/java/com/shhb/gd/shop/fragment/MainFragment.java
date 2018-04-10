@@ -21,7 +21,6 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.shhb.gd.shop.R;
 import com.shhb.gd.shop.activity.DetailsActivity;
-import com.shhb.gd.shop.activity.GoolgeIdActivity;
 import com.shhb.gd.shop.activity.LoginActivity;
 import com.shhb.gd.shop.activity.RecyclerActivity;
 import com.shhb.gd.shop.adapter.MainFragmentAdapter;
@@ -112,31 +111,31 @@ public class MainFragment extends BaseFragment implements OnRefreshListener, OnL
         recyclerView.setAdapter(mAdapter);
         mAdapter.setOnClickListener(this);
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                RecyclerView.LayoutManager mLayoutManager = recyclerView.getLayoutManager();
-                int lastVisibleItem = ((LinearLayoutManager)mLayoutManager).findLastVisibleItemPosition();
-                int totalItemCount = mLayoutManager.getItemCount();
-                // dy>0 表示向下滑动
-                if (lastVisibleItem >= totalItemCount - 4 && dy > 0) {//lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载
-                    if(!swipeToLoadLayout.isLoadingMore()){
-                        swipeToLoadLayout.setLoadingMore(true);
-                    }
-                }
-            }
-        });
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE ){
-                    if (!ViewCompat.canScrollVertically(recyclerView, 1)){
-                        swipeToLoadLayout.setLoadingMore(true);
-                    }
-                }
-            }
-        });
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                RecyclerView.LayoutManager mLayoutManager = recyclerView.getLayoutManager();
+//                int lastVisibleItem = ((LinearLayoutManager)mLayoutManager).findLastVisibleItemPosition();
+//                int totalItemCount = mLayoutManager.getItemCount();
+//                // dy>0 表示向下滑动
+//                if (lastVisibleItem >= totalItemCount - 4 && dy > 0) {//lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载
+//                    if(!swipeToLoadLayout.isLoadingMore()){
+//                        swipeToLoadLayout.setLoadingMore(true);
+//                    }
+//                }
+//            }
+//        });
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE ){
+//                    if (!ViewCompat.canScrollVertically(recyclerView, 1)){
+//                        swipeToLoadLayout.setLoadingMore(true);
+//                    }
+//                }
+//            }
+//        });
     }
 
     @Override
