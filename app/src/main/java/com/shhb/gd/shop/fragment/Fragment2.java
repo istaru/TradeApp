@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 public class Fragment2 extends BaseNavPagerFragment {
+    private String json;
 
     public static Fragment2 newInstance() {
         Fragment2 fragment = new Fragment2();
@@ -37,10 +38,11 @@ public class Fragment2 extends BaseNavPagerFragment {
 
     @Override
     protected List<String> getTitles() {
-        String json = PrefShared.getString(this.getContext(), "9TabJson");
+        json = PrefShared.getString(this.getContext(), "9TabJson");
+        Log.e("tabData_9块9", json);
         List<String> titles = null;
         try {
-            titles = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("titles")),String.class);
+            titles = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("titles")), String.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,20 +50,14 @@ public class Fragment2 extends BaseNavPagerFragment {
     }
 
     @Override
-    protected List<String> getCId() {
-        String json = PrefShared.getString(this.getContext(), "9TabJson");
+    protected Fragment getFragment(int position) {
         List<String> cIds = null;
         try {
-            cIds = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("cIds")),String.class);
+            cIds = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("cIds")), String.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cIds;
-    }
-
-    @Override
-    protected Fragment getFragment(int position) {
-        String cId = getCId().get(position) + "," + 1;
+        String cId = cIds.get(position) + "," + 1;
         return MainFragment.newInstance(cId);
     }
 }

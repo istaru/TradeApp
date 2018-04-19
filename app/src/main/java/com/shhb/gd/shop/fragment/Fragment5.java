@@ -55,11 +55,6 @@ public class Fragment5 extends BaseNavPagerFragment {
     }
 
     @Override
-    protected List<String> getCId() {
-        return null;
-    }
-
-    @Override
     protected Fragment getFragment(int position) {
         String cName = getTitles().get(position)+","+mType;
         return RecyclerFragment.newInstance(cName);

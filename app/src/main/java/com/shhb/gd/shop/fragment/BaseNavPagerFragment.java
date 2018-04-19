@@ -28,7 +28,7 @@ public abstract class BaseNavPagerFragment extends BaseFragment {
 
     protected abstract List<String> getTitles();
 
-    protected abstract List<String> getCId();
+//    protected abstract List<String> getCId();
 
     protected abstract Fragment getFragment(int position);
 

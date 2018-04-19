@@ -29,10 +29,11 @@ import java.util.List;
  * Created by superMoon on 2017/3/15.
  */
 
-public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListener{
+public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListener {
     private EditText search1;
-    private ImageView msg,cart;
+    private ImageView msg, cart;
     private SearchWindow searchWindow;
+    private String json;
 
     public static Fragment1 newInstance() {
         Fragment1 fragment = new Fragment1();
@@ -59,7 +60,7 @@ public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListe
     View.OnFocusChangeListener searchOnFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View view, boolean hasFocus) {
-            if (hasFocus){//得到焦点时的处理内容
+            if (hasFocus) {//得到焦点时的处理内容
 //                search.setFocusable(true);
 //                search.setFocusableInTouchMode(true);
                 search1.clearFocus();//失去焦点
@@ -74,15 +75,15 @@ public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Intent intent;
-        String userId = PrefShared.getString(context,"userId");
-        String nick = PrefShared.getString(context,"nick");
-        switch (view.getId()){
+        String userId = PrefShared.getString(context, "userId");
+        String nick = PrefShared.getString(context, "nick");
+        switch (view.getId()) {
             case R.id.message:
 
                 break;
             case R.id.cart:
-                if(null != userId && !TextUtils.equals(userId,"")){
-                    if(null != nick && !TextUtils.equals(nick,"")){
+                if (null != userId && !TextUtils.equals(userId, "")) {
+                    if (null != nick && !TextUtils.equals(nick, "")) {
                         intent = new Intent(context, AlibcActivity.class);
                         intent.putExtra("type", "cart");
                         context.startActivity(intent);
@@ -99,10 +100,11 @@ public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListe
 
     @Override
     protected List<String> getTitles() {
-        String json = PrefShared.getString(this.getContext(), "homeTabJson");
+        json = PrefShared.getString(this.getContext(), "homeTabJson");
+        Log.e("tabData_首页", json);
         List<String> titles = null;
         try {
-            titles = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("titles")),String.class);
+            titles = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("titles")), String.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,20 +112,14 @@ public class Fragment1 extends BaseNavPagerFragment implements View.OnClickListe
     }
 
     @Override
-    protected List<String> getCId() {
-        String json = PrefShared.getString(this.getContext(), "homeTabJson");
+    protected Fragment getFragment(int position) {
         List<String> cIds = null;
         try {
-            cIds = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("cIds")),String.class);
+            cIds = JSON.parseArray(String.valueOf(JSONObject.parseObject(json).getJSONArray("cIds")), String.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cIds;
-    }
-
-    @Override
-    protected Fragment getFragment(int position) {
-        String cId = getCId().get(position) + "," + 0;
+        String cId = cIds.get(position) + "," + 0;
         return MainFragment.newInstance(cId);
     }
 }
